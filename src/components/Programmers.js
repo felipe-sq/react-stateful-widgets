@@ -29,15 +29,16 @@ export default function Programmers() {
   // The programmers list on the one hand, and the id of the featured programmer on the other.
   const [programmers, setProgrammers] = useState(listOfAwesome)
   const [featuredId, setFeaturedId] = useState(listOfAwesome.id)
+  console.log(featuredId);
 
-  const getNameOfFeatured = () => {
+  const getNameOfFeatured = (id) => {
     // Leave this for last!
     // This is NOT an event handler but a helper function. See its usage inside the JSX.
     // It's going to utilize both slices of state to return the _name_ of the featured dev.
     // The beauty of closures is that we can "see" both slices of state from this region
     // of the program, without needing to inject the information through arguments.
-    setProgrammers(listOfAwesome.name)
-    setFeaturedId(listOfAwesome.id)
+    (id === programmers.id ? 'featured' : '')
+    return
   };
 
   const style = {
