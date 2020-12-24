@@ -30,6 +30,7 @@ export default function Programmers() {
   const [programmers, setProgrammers] = useState(listOfAwesome)
   const [featuredId, setFeaturedId] = useState(null)
   // console.log(programmers[1].name);
+  // console.log(featuredId)
 
   const getNameOfFeatured = (id) => {
     // Leave this for last!
@@ -37,7 +38,7 @@ export default function Programmers() {
     // It's going to utilize both slices of state to return the _name_ of the featured dev.
     // The beauty of closures is that we can "see" both slices of state from this region
     // of the program, without needing to inject the information through arguments.
-    (id === featuredId ? setFeaturedId(null) : setFeaturedId(id))
+    (id === featuredId ? featuredId.name : null)
     return
   };
 
@@ -57,7 +58,7 @@ export default function Programmers() {
           we could never add or edit programmers in the future. The list would be a static thing." */
           programmers.map(dev =>
             <div className='programmer' key={dev.id}>
-              {dev.name} <button onClick={() => { dev.id/* in here set the featured id to be dev.id */, console.log(dev.id)}}>Feature</button>
+              {dev.name} <button onClick={() => { setFeaturedId(dev.id)/* in here set the featured id to be dev.id */, console.log(dev.id)}}>Feature</button>
             </div>
           )
         }
