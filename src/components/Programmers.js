@@ -30,7 +30,8 @@ export default function Programmers() {
   const [programmers, setProgrammers] = useState(listOfAwesome)
   const [featuredId, setFeaturedId] = useState(null)
   // console.log(programmers[1].name);
-  // console.log(featuredId)
+  // const test1 = setFeaturedId(programmers[1-1]);
+  // console.log(featuredId);
 
   const getNameOfFeatured = (id) => {
     // Leave this for last!
@@ -38,9 +39,11 @@ export default function Programmers() {
     // It's going to utilize both slices of state to return the _name_ of the featured dev.
     // The beauty of closures is that we can "see" both slices of state from this region
     // of the program, without needing to inject the information through arguments.
-    (id === featuredId ? featuredId.name : null)
-    return
+    let featuredName = id === featuredId ? programmers[featuredId -1].name : setFeaturedId(null)
+    // console.log(programmers[featuredId -1]['name'])
+    return featuredName
   };
+
 
   const style = {
     fontSize: '1.5em',
@@ -69,7 +72,8 @@ export default function Programmers() {
           // Pseudo-code: if the currently featured id is truthy render text 1, otherwise render text 2.
           // Replace the hard-coded false with the correct variable.
           featuredId
-            ? `🎉 Let's celebrate ${getNameOfFeatured(featuredId)}! 🥳`
+            ? `🎉 Let's celebrate ${getNameOfFeatured(featuredId)}! 🥳` 
+            // ? `🎉 Let's celebrate ${programmers[featuredId -1].name}! 🥳`
             : 'Pick an awesome programmer'
         }
       </div>
